@@ -1,41 +1,57 @@
- Node deleteHead(Node head){
-        if(head == null || head.next==null){
+/*
+
+Definition for doubly Link List Node
+class Node {
+    int data;
+    Node next;
+    Node prev;
+
+    Node(int val) {
+        data = val;
+        next = null;
+        prev = null;
+    }
+}
+*/
+class Solution {
+    Node deleteHead(Node head){
+        if(head == null){
             return null;
         }
         Node prev = head;
         head = head.next;
-        head.back = null;
+        head.prev = null;
         prev.next = null;
         return head;
-}
+    }
     Node deleteTail(Node head){
-        if(head==null || head.next == null){
+        if(head == null || head.next == null){
             return null;
         }
         Node tail = head;
-        whle(tail.next !=null){
-            tail=tail.next;
+        while(tail.next != null){
+            tail = tail.next;
         }
-        Node newTail = tail.back;
+        Node newTail = tail.prev;
         newTail.next = null;
-        tail.back = null;
+        tail.prev = null;
         return head;
     }
-    Node deleteK(Node head, int k) {
-        // Your code here
-     if(head == null){
-         return null;
-     }   
-     int count = 0;
-     Node kNode = head;
-     while(kNode != null){
-         count++;
-         if(count == k) break;
-         kNode = kNode.kNode.next;
-     }
-     Node prev = kNode.back;
-     Node front = kNode.next;
-     if(prev==null && front==null){
+    public Node deleteNode(Node head, int x) {
+        // code here
+        if(head == null){
+            return null;
+        }
+        int counter = 0;
+        Node kNode = head;
+        while(kNode!= null){
+            counter++;
+            if(counter == x) break;
+            kNode = kNode.next;
+        }
+        Node prev = kNode.prev;
+        Node front = kNode.next;
+         if(prev==null && front==null){
          return null;
      }
      else if(prev==null){
@@ -45,8 +61,9 @@
          return deleteTail(head);
      }
      prev.next = front;
-     front.back = prev;
+     front.prev = prev;
      kNode.next = null;
      kNode.prev = null;
      return head;
     }
+}
