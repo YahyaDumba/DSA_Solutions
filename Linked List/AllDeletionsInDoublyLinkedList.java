@@ -66,4 +66,16 @@ class Solution {
      kNode.prev = null;
      return head;
     }
+    private static void deleteNode(Node temp){
+        Node prev = temp.back;
+        Node front = temp.next;
+        if(front == null){
+            prev.next = null;
+            temp.back = null;
+            return;
+        }
+        prev.next = front;
+        front.back = prev;
+        temp.next = temp.back = null;
+    }
 }
