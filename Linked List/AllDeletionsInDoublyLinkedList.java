@@ -67,15 +67,15 @@ class Solution {
      return head;
     }
     private static void deleteNode(Node temp){
-        Node prev = temp.back;
+        Node prev = temp.prev;
         Node front = temp.next;
         if(front == null){
             prev.next = null;
-            temp.back = null;
+            temp.prev = null;
             return;
         }
         prev.next = front;
-        front.back = prev;
-        temp.next = temp.back = null;
+        front.prev = prev;
+        temp.next = temp.prev = null;
     }
 }
